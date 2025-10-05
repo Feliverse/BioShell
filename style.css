@@ -455,6 +455,38 @@ main.container {
       padding: 0.35rem 0.5rem;
     }
 
+    /* Style FontAwesome hamburger inside navbar-toggler */
+    .navbar-toggler .fa {
+      font-size: 1.2rem;
+      color: #0b1220; /* dark accent to match brand */
+    }
+
+    .navbar-toggler:focus .fa {
+      color: var(--accent-dark);
+    }
+
+    /* Remove visible border/background from toggler button */
+    .navbar-toggler {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Keep an accessible focus ring but visually subtle on the button itself */
+    .navbar-toggler:focus {
+      outline: none !important;
+      box-shadow: 0 0 0 0.18rem rgba(92,168,126,0.18) !important; /* subtle sage ring */
+    }
+
+    /* Toggle animation: rotate icon slightly and transition color when menu is open */
+    .navbar-toggler .fa {
+      transition: transform 220ms ease, color 180ms ease;
+    }
+    .navbar-toggler.open .fa {
+      transform: rotate(90deg) scale(1.05);
+      color: var(--accent-dark);
+    }
+
     /* Formularios: compacidad */
     #about .form-control {
       font-size: 0.95rem;
@@ -649,6 +681,11 @@ main > section {
   align-items: center;
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+/* Make room for fixed navbar when scrolling to anchors */
+main > section, main > section h2, main > section h1 {
+  scroll-margin-top: calc(var(--navbar-height) + 1rem);
 }
 
 /* Excepciones para secciones de contenido largo */
