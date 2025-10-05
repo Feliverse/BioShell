@@ -303,4 +303,14 @@ main.container {
   #about .bg-white {
     background-color: #ffffff;
   }
+
+  /* Footer */
+  #site-footer {
+    background: transparent;
+    color: #374151;
+  }
+  #site-footer a {
+    color: #0b1220;
+    text-decoration: underline;
+  }
 }
