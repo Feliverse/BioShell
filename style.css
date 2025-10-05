@@ -5,10 +5,36 @@ body {
   background-color: #f7f7f9; /* off-white */
 }
 
+:root {
+  /* altura estimada del navbar; ajustar si tu navbar es más alto */
+  --navbar-height: 70px;
+}
+
+/* Si usamos nav fixed-top, garantizar que esté por encima y tenga fondo */
+.navbar.fixed-top {
+  z-index: 1030; /* por encima de contenidos */
+  background-color: rgba(255,255,255,0.98);
+}
+
 /* Ajustes de padding para mobile */
 main.container {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  padding-top: calc(var(--navbar-height) + 0.5rem);
+}
+
+@media (max-width: 576px) {
+  :root { --navbar-height: 88px; }
+  main.container { padding-top: calc(var(--navbar-height) + 0.25rem); }
+}
+
+/* Separación adicional para el título principal en la sección home */
+#home h1 {
+  margin-top: calc(var(--navbar-height) + 0.5rem);
+}
+
+@media (max-width: 576px) {
+  #home h1 { margin-top: calc(var(--navbar-height) + 0.25rem); font-size: 1.5rem; }
 }
 
 .topnav {
@@ -263,6 +289,27 @@ main.container {
     }
   }
 
+  /* Hacer que cada sección ocupe al menos la altura de la ventana */
+  main > section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center; /* centra verticalmente */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Secciones con contenido largo no deben recortar por min-height */
+  #investigacion, #about {
+    align-items: flex-start;
+  }
+
+  @media (max-width: 576px) {
+    main > section {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+
   /* Biografía: formato compacto y profesional */
   #biografia {
     background: #ffffff;
@@ -313,4 +360,25 @@ main.container {
     color: #0b1220;
     text-decoration: underline;
   }
+
+/* Global: asegurar que cada sección ocupe al menos la altura de la ventana (fuera de media queries) */
+main > section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Excepciones para secciones de contenido largo */
+#investigacion, #about {
+  align-items: flex-start;
+}
+
+@media (max-width: 576px) {
+  main > section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
 }
