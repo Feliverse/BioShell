@@ -571,10 +571,32 @@ main.container {
 
   /* Biografía: formato compacto y profesional */
   #biografia {
-    background: #ffffff;
+    position: relative;
+    /* primary: backBio.jpg; fallback: background.png (si no está) */
+    background-color: #ffffff;
+    background-image: url('./images/backBio.jpg'), url('./images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
     padding: 1.25rem;
     border-radius: 8px;
     box-shadow: 0 6px 18px rgba(2,6,23,0.03);
+    color: #04281f;
+  }
+
+  /* Overlay sutil sobre la imagen de biografía para legibilidad */
+  #biografia::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.4) 100%);
+    pointer-events: none;
+  }
+
+  #biografia > * {
+    position: relative;
+    z-index: 2;
   }
 
   #biografia h2 {
@@ -622,7 +644,7 @@ main.container {
 
 /* Global: asegurar que cada sección ocupe al menos la altura de la ventana (fuera de media queries) */
 main > section {
-  min-height: 100vh;
+  min-height: 95vh;
   display: flex;
   align-items: center;
   padding-top: 2rem;
